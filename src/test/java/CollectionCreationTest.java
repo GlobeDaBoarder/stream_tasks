@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -83,5 +84,15 @@ public class CollectionCreationTest {
                 this.resultList.toString());
     }
 
+    @Test
+    void findBiggestStockAmount(){
+        //find name of book with the biggest quanitty
 
+        String bookName = this.bookList
+                .stream()
+                .max(Comparator.comparing(Book::getQuantity))
+                .get().getName();
+
+        assertEquals("The Little Prince", bookName);
+    }
 }
